@@ -25,8 +25,11 @@ struct vec2 {
     //  --- Constructors and Destructors ---
     //
 
-    vec2( GLfloat s = GLfloat(0.0) ) :
-	x(s), y(s) {}
+    vec2( ) :
+	x(GLfloat(0.0)), y(GLfloat(0.0)) {}
+
+    explicit vec2( GLfloat s ) :
+    x(s), y(s) {}
 
     vec2( GLfloat x, GLfloat y ) :
 	x(x), y(y) {}
@@ -170,7 +173,10 @@ struct vec3 {
     //  --- Constructors and Destructors ---
     //
 
-    vec3( GLfloat s = GLfloat(0.0) ) :
+    vec3() :
+    x(GLfloat(0.0)), y(GLfloat(0.0)), z(GLfloat(0.0)) {}
+
+    explicit vec3( GLfloat s ) :
 	x(s), y(s), z(s) {}
 
     vec3( GLfloat x, GLfloat y, GLfloat z ) :
@@ -320,7 +326,10 @@ struct vec4 {
     //  --- Constructors and Destructors ---
     //
 
-    vec4( GLfloat s = GLfloat(0.0) ) :
+    vec4(  ) :
+	x(GLfloat(0.0)), y(GLfloat(0.0)), z(GLfloat(0.0)), w(GLfloat(0.0)) {}
+
+    explicit vec4( GLfloat s ) :
 	x(s), y(s), z(s), w(s) {}
 
     vec4( GLfloat x, GLfloat y, GLfloat z, GLfloat w ) :
