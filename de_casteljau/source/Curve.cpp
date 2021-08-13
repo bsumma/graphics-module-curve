@@ -20,7 +20,9 @@ void Curve::updateCurve(){
   if(curve_buffer == 0){ glGenBuffers( 1, &curve_buffer ); }
   glBindBuffer( GL_ARRAY_BUFFER, curve_buffer );
 
-  glBufferData( GL_ARRAY_BUFFER, sizeof(vec2)*curve_point_count, &tempHolder[0], GL_STATIC_DRAW );
+  if (curve_point_count > 0 && tempHolder.size() > 0) {
+    glBufferData( GL_ARRAY_BUFFER, sizeof(vec2)*curve_point_count, &tempHolder[0], GL_STATIC_DRAW );
+  }
   
   glEnableVertexAttribArray(glGetAttribLocation(program, "vPosition"));
   glVertexAttribPointer( glGetAttribLocation(program, "vPosition"), 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
@@ -50,7 +52,7 @@ void Curve::updateControlPoint(unsigned int idx, vec2 new_position){
     if(idx < control_points.size()-1){
       control_points[idx+1] += delta;
     }
-  }else{ //if(idx > 1 && idx < control_points.size()-2){
+  }else if(idx > 1 && idx < control_points.size()-2){
     if(idx > 1 && (idx-2)%3 == 0){
       vec2 offset = control_points[idx+1] - control_points[idx];
       control_points[idx+2] = control_points[idx+1] + offset;

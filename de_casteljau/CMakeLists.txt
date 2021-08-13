@@ -32,6 +32,8 @@ add_executable(de_casteljau WIN32 MACOSX_BUNDLE
 	source/Curve.h
 	source/common/Angel.h
 	source/common/mat.h
+	source/common/u8names.cpp
+	source/common/u8names.h
     source/common/vec.h)
 
 #Windows cleanup
